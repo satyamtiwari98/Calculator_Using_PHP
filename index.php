@@ -7,93 +7,73 @@ $value1 = '';
 $result ='';
 $name2 ='operator';
 $value2 = '';
-if(isset($_POST['input'])){
+
+
+if(isset($_POST['input'])) {
+
     $disp = $_POST['input'];
-}
-else{
+
+} else {
+
     $disp = "";
-}
-if(isset($_POST['val'])){
-    $disp = $_POST['input'].$_POST['val'];
-    // $prev = $disp;
- }
-else{
-    //  $prev = $disp;
-     $disp = '';
+
 }
 
-if(isset($_POST['operator'])){
+
+if(isset($_POST['val'])) {
+
+    $disp = $_POST['input'].$_POST['val'];
+
+} else {
+
+     $disp = '';
+
+}
+
+
+
+if(isset($_POST['operator'])) {
+
     $value1 = $_POST['input'];
     setcookie($name1,$value1,time() + (86400 + 30),"/");
 
     $value2 = $_POST['operator'];
     setcookie($name2,$value2,time() + (86400 + 30),"/");
     $disp = "";
+
 }
-if(isset($_POST['equals'])){
+
+
+if(isset($_POST['equals'])) {
+
     $disp = $_POST['input'];
-    // echo $_COOKIE['operator'];
-    // echo $_COOKIE['disp'];
-    // echo $disp;
-    switch($_COOKIE['operator']){
+   
+    switch($_COOKIE['operator']) {
+
         case "+":
           $result = $_COOKIE['disp'] + $disp;
           break;
-        case "/":
-          $result = $_COOKIE['disp'] / $disp;
-          break;
+        
         case "-":
           $result = $_COOKIE['disp'] - $disp;
           break;
+
         case "*":
           $result = $_COOKIE['disp'] * $disp;
           break;
-       }
+
+        case "/":
+            $result = $_COOKIE['disp'] / $disp;
+            break;
+
+    }
     
-    // $result = $disp + $_COOKIE['disp'];
-    // echo $result;
+  
     $disp = $result;
+
 }
 
-// if(isset($_POST['operator'])){
-//     echo $_POST['operator'];
-//     $prev = $disp;
-//     // $disp = 0;
-//     echo $prev.'<br>';
-//     switch($_POST['operator']){
-//         case '+':
-//             $disp = $prev + $disp;
-//             echo $disp;
-//             break;
-//         case '-':
-//             $disp = $prev - $disp;
-//             echo $disp;
-//             break;
-//         case '*':
-//             $disp = $prev * $disp;
-//             echo $disp;
-//             break;
-//         case '/':
-//             $disp = $prev / $disp;
-//             echo $disp;
-//             break;
-//         case '=':
-//             $disp = $prev .$_POST['operator'].$disp;
-//             echo $disp;
-//             break;
-//         default:
-//             $disp = 0;
-//             break;
-//     }
-//     $prev = $disp;
-//     // $disp =0;
-
-// }
-
-
 ?>
-
-
 
 <!doctype html>
 <html lang="en">
@@ -108,15 +88,18 @@ if(isset($_POST['equals'])){
   
     <link rel="stylesheet" href="style.css">
 
-    <title>My Calculator</title>
+    <title>My Calculator Using Php</title>
 
 </head>
 
 <body>
+
     <section class="grid_container">
+
     <form action="index.php" method="post">
+
         <h1 id="myHeading">
-            My Calculator
+            My Calculator 
         </h1>
 
         <input type="text" id="input" name="input" value="<?php echo $disp; ?>"/>
@@ -176,10 +159,12 @@ if(isset($_POST['equals'])){
 
         <div>
 
-            <button class="clearbut" onclick="clearCal()">Clear</button>
+            <button class="clearbut" onclick="clearCal()" style="padding: 10px 160px;">Clear</button>
 
         </div>
+
         </form>
+
     </section>
 
 
